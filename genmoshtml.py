@@ -7,26 +7,27 @@ import glob
 import argparse
 
 
-def gen_oneshot_rows():
+def gen_naturalness_rows():
     ret = []
 
-    melgan = sorted(glob.glob('data/melgan/*.wav'))
+    sources = sorted(glob.glob('data/source/*.wav'))
     aga = 'data/again'
     ada = 'data/adain'
     vq = 'data/vqvc'
     au = 'data/autovc'
 
-    for src in melgan:
+    idx = 0
+    for src in sources:
         src_basename = os.path.basename(src).split('.')[0]
-        for tgt in melgan:
+        for tgt in sources:
             if src == tgt:
                 continue
             tgt_basename = os.path.basename(tgt).split('.')[0]
+            idx += 1
             row = (
-                src_basename,
-                tgt_basename,
-                src, 
-                tgt,
+                idx,
+                src,
+                os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(ada, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(vq, f'{src_basename}_to_{tgt_basename}.wav'),
@@ -36,23 +37,31 @@ def gen_oneshot_rows():
     return ret
 
 
-def gen_forfun_rows():
+def gen_similarity_rows():
     ret = []
 
-    srcs = sorted(glob.glob('data/forfun/source/*.wav'))
-    tgts = sorted(glob.glob('data/forfun/target/*.wav'))
-    pps = 'data/forfun/converted'
+    sources = sorted(glob.glob('data/source/*.wav'))
+    aga = 'data/again'
+    ada = 'data/adain'
+    vq = 'data/vqvc'
+    au = 'data/autovc'
 
-    for src in srcs:
+    idx = 0
+    for src in sources:
         src_basename = os.path.basename(src).split('.')[0]
-        for tgt in tgts:
+        for tgt in sources:
+            if src == tgt:
+                continue
             tgt_basename = os.path.basename(tgt).split('.')[0]
+            idx += 1
             row = (
-                src_basename,
-                tgt_basename,
-                src, 
+                idx,
                 tgt,
-                os.path.join(pps, f'{src_basename}_to_{tgt_basename}.wav'),
+                os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
+                os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
+                os.path.join(ada, f'{src_basename}_to_{tgt_basename}.wav'),
+                os.path.join(vq, f'{src_basename}_to_{tgt_basename}.wav'),
+                os.path.join(au, f'{src_basename}_to_{tgt_basename}.wav'),
             )
             ret.append(row)
     return ret
@@ -62,14 +71,14 @@ def main():
     """Main function."""
     loader = FileSystemLoader(searchpath="./templates")
     env = Environment(loader=loader)
-    template = env.get_template("base.html.jinja2")
+    template = env.get_template("mos.html.jinja2")
 
-    oneshot_rows = gen_oneshot_rows()
-    # forfun_rows = gen_forfun_rows()
+    naturalness_rows = gen_naturalness_rows()
+    similarity_rows = gen_similarity_rows()
 
     html = template.render(
-        oneshot_rows=oneshot_rows,
-        # forfun_rows=forfun_rows
+        naturalness_rows=naturalness_rows,
+        similarity_rows=similarity_rows,
     )
     print(html)
 
