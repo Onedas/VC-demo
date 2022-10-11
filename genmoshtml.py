@@ -4,17 +4,21 @@ from jinja2 import FileSystemLoader, Environment
 
 import os
 import glob
-import argparse
+import yaml
 
 
 def gen_naturalness_rows():
     ret = []
 
     sources = sorted(glob.glob('data/source/*.wav'))
+    proposed = 'data/proposed'
     aga = 'data/again'
     ada = 'data/adain'
     vq = 'data/vqvc'
     au = 'data/autovc'
+
+    with open('MOSLink/Naturalness/google_forms.yaml') as f:
+        surveys = yaml.load(f, Loader=yaml.SafeLoader)
 
     idx = 0
     for src in sources:
@@ -27,11 +31,12 @@ def gen_naturalness_rows():
             row = (
                 idx,
                 src,
-                os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
+                os.path.join(proposed, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(ada, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(vq, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(au, f'{src_basename}_to_{tgt_basename}.wav'),
+                surveys.get(idx, None)
             )
             ret.append(row)
     return ret
@@ -41,10 +46,15 @@ def gen_similarity_rows():
     ret = []
 
     sources = sorted(glob.glob('data/source/*.wav'))
+
+    proposed = 'data/proposed'
     aga = 'data/again'
     ada = 'data/adain'
     vq = 'data/vqvc'
     au = 'data/autovc'
+
+    with open('MOSLink/Similarity/google_forms.yaml') as f:
+        surveys = yaml.load(f, Loader=yaml.SafeLoader)
 
     idx = 0
     for src in sources:
@@ -57,11 +67,12 @@ def gen_similarity_rows():
             row = (
                 idx,
                 tgt,
-                os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
+                os.path.join(proposed, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(aga, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(ada, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(vq, f'{src_basename}_to_{tgt_basename}.wav'),
                 os.path.join(au, f'{src_basename}_to_{tgt_basename}.wav'),
+                surveys.get(idx, None)
             )
             ret.append(row)
     return ret

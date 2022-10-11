@@ -44,38 +44,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-14 col-md-12 mx-auto">
-                <!-- Abstract -->
+                <!-- Summary -->
                 <div class="post-preview">
                     <h2 class="post-title">
-                        Abstract
+                        Summary
                     </h2>
                     <p>
                         TBW
                     </p>
                 </div>
 
-                <!-- Survey -->
-                <div class="post-preview">
-                    <h2 class="post-title">
-                        Survey Link
-                    </h2>
-                    <p>
-
-                        <a href="https://arxiv.org/abs/2011.00316">here</a>.
-                    </p>
-                </div>
-
-                <!-- Code -->
-                <div class="post-preview">
-                    <h2 class="post-title">
-                        Code
-                    </h2>
-                    <p>
-                        TBA
-{#                        The code is available#}
-{#                        <a href="https://github.com/Onedas/VC">here</a>.#}
-                    </p>
-                </div>
 
                 <!-- Audios -->
                 <div class="post-preview">
@@ -95,7 +73,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for i, a, b, c, d, e, f in naturalness_rows%}
+                            {% for i, a, b, c, d, e, f, survey in naturalness_rows%}
                             <tr>
                                 <td>
                                     # {{ i }}
@@ -155,7 +133,7 @@
                                     </table>
                                 </td>
                                 <td>
-                                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe6N6CidLlq9GXOlJHeYjh_9T6oT8N7OdwW9RGmB_xBmPd_4g/viewform?embedded=true" width="640" height="640" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+                                    <iframe src="{{ survey }}/viewform?embedded=true" width="640" height="640">로드 중…</iframe>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -179,11 +157,11 @@
                                 <th scope="col">No. </th>
                                 <th scope="col">Target</th>
                                 <th scope="col">Audios</th>
-                                <th scope="col">Survey Form</th>
+{#                                <th scope="col">Survey Form</th>#}
                             </tr>
                         </thead>
                         <tbody>
-                            {% for i, tgt, a, b, c, d, e in similarity_rows%}
+                            {% for i, tgt, a, b, c, d, e, survey in similarity_rows%}
                             <tr>
                                 <td>
                                     {{ i }}
@@ -240,7 +218,7 @@
                                     </table>
                                 </td>
                                 <td>
-                                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdi80IfjxKL6mide92UT5sW3eovrtqR0f3qGlnjhp-0XZ-pfA/viewform?embedded=true" width="640" height="640" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+                                    <iframe src="{{ survey }}/viewform?embedded=true" width="640" height="640">로드 중…</iframe>
                                 </td>
                             </tr>
                             {% endfor %}
