@@ -1,36 +1,36 @@
 1:
-- data/adain\p334_007_to_p360_018.wav
 - data/vqvc\p334_007_to_p360_018.wav
 - data/proposed\p334_007_to_p360_018.wav
 - data/again\p334_007_to_p360_018.wav
+- data/adain\p334_007_to_p360_018.wav
 - data/autovc\p334_007_to_p360_018.wav
 2:
-- data/adain\p334_007_to_p362_010.wav
+- data/proposed\p334_007_to_p362_010.wav
 - data/autovc\p334_007_to_p362_010.wav
 - data/again\p334_007_to_p362_010.wav
-- data/proposed\p334_007_to_p362_010.wav
 - data/vqvc\p334_007_to_p362_010.wav
+- data/adain\p334_007_to_p362_010.wav
 3:
-- data/vqvc\p360_018_to_p334_007.wav
-- data/again\p360_018_to_p334_007.wav
 - data/adain\p360_018_to_p334_007.wav
-- data/autovc\p360_018_to_p334_007.wav
+- data/again\p360_018_to_p334_007.wav
+- data/vqvc\p360_018_to_p334_007.wav
 - data/proposed\p360_018_to_p334_007.wav
+- data/autovc\p360_018_to_p334_007.wav
 4:
-- data/vqvc\p360_018_to_p362_010.wav
-- data/autovc\p360_018_to_p362_010.wav
-- data/again\p360_018_to_p362_010.wav
 - data/adain\p360_018_to_p362_010.wav
+- data/again\p360_018_to_p362_010.wav
+- data/autovc\p360_018_to_p362_010.wav
+- data/vqvc\p360_018_to_p362_010.wav
 - data/proposed\p360_018_to_p362_010.wav
 5:
-- data/autovc\p362_010_to_p334_007.wav
-- data/again\p362_010_to_p334_007.wav
-- data/vqvc\p362_010_to_p334_007.wav
-- data/adain\p362_010_to_p334_007.wav
 - data/proposed\p362_010_to_p334_007.wav
+- data/again\p362_010_to_p334_007.wav
+- data/adain\p362_010_to_p334_007.wav
+- data/autovc\p362_010_to_p334_007.wav
+- data/vqvc\p362_010_to_p334_007.wav
 6:
-- data/adain\p362_010_to_p360_018.wav
 - data/vqvc\p362_010_to_p360_018.wav
 - data/again\p362_010_to_p360_018.wav
-- data/autovc\p362_010_to_p360_018.wav
+- data/adain\p362_010_to_p360_018.wav
 - data/proposed\p362_010_to_p360_018.wav
+- data/autovc\p362_010_to_p360_018.wav
